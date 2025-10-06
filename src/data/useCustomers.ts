@@ -6,7 +6,7 @@ export type Customer = {
     email: string | null;
     id: string;
     name: string;
-    role: "Admin" | "Manager" | string;
+    role: "ADMIN" | "MANAGER" | string;
 };
 
 type ListResponse = {
@@ -15,7 +15,7 @@ type ListResponse = {
     };
 };
 
-export const useCustomers = () => {
+const useCustomers = () => {
     const [customers, setCustomers] = useState<Customer[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -44,4 +44,6 @@ export const useCustomers = () => {
 
     return { customers, loading, error, refetch: fetchCustomers };
 }
+
+export default useCustomers;
 

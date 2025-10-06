@@ -1,4 +1,4 @@
-import awsconfig from '../../aws-exports';
+import awsconfig from '../aws-exports';
 
 type graphQLRequest = {
     query: string;

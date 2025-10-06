@@ -1,25 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useMemo , useState } from 'react';
+import { AppContainer, Divider, H2, Section } from './styled';
+import RoleFilter from './components/RoleFilter';
+import CustomerList from './components/CustomerList';
+import useCustomers from './data/useCustomers';
+
 
 function App() {
+
+  const [role, setRole] = useState<'ADMIN' | 'MANAGER'>('ADMIN'); // default Admin per design
+  const { customers, loading, error, refetch } = useCustomers();
+
+  const visible = useMemo(() => {
+    const items = customers ?? [];
+    return items.filter((c) => c.role === role);
+  }, [customers, role]);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <Divider />
+      <Section>
+        <H2>User Types</H2>
+        <RoleFilter value={role} onChange={setRole} />
+      </Section>
+      <Divider />
+      <Section>
+        <H2>{role} Users</H2>
+
+        {loading && <div>Loading customers…</div>}
+        {error && (
+          <div role="alert">
+            Error: {error} <button onClick={() => refetch()}>Retry</button>
+          </div>
+        )}
+        {!loading && !error && <CustomerList customers={visible} />}
+      </Section>
+      <Divider />
+    </AppContainer>
   );
 }
 

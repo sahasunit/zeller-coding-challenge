@@ -23,7 +23,7 @@ const Avatar = styled.div`
 `;
 
 const Name = styled.div`
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 8px;
 `;
 

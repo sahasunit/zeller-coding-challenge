@@ -4,8 +4,8 @@ import type { Customer } from '../data/useCustomers';
 const Row = styled.li`
   display: grid;
   grid-template-columns: 40px 1fr;
-  gap: 12px;
-  padding: 12px;
+  gap: 18px;
+  padding: 18px;
   border-radius: 12px;
   align-items: center;
 `;
@@ -23,9 +23,10 @@ const Avatar = styled.div`
 
 const Name = styled.div`
   font-weight: 600;
+  margin-bottom: 8px;
 `;
 
-const Sub = styled.div`
+const Role = styled.div`
   font-size: 12px;
   color: #6b7280;
 `;
@@ -39,7 +40,7 @@ const CustomerItem = ({ customer }: Props) => {
       <Avatar>{letter || '•'}</Avatar>
       <div>
         <Name>{customer?.name ?? '-'}</Name>
-        <Sub>{customer?.role ?? ''}</Sub>
+        <Role>{customer?.role ?? ''}</Role>
       </div>
     </Row>
   );

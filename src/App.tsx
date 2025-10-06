@@ -15,6 +15,10 @@ function App() {
     return items.filter((c) => c.role === role);
   }, [customers, role]);
 
+  const AdjustRoleCasing = (text: "ADMIN" | "MANAGER") => {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
+
 
   return (
     <AppContainer>
@@ -25,7 +29,7 @@ function App() {
       </Section>
       <Divider />
       <Section>
-        <H2>{role} Users</H2>
+        <H2>{AdjustRoleCasing(role)} Users</H2>
 
         {loading && <div>Loading customers…</div>}
         {error && (

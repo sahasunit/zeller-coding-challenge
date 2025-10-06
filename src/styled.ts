@@ -12,14 +12,14 @@ export const Section = styled.section`
 `;
 
 export const H2 = styled.h2`
-    font-size: 42px;
+    font-size: 24px;
     font-weight: 600;
     margin: 0 0 12px;
 `;
 
 export const List = styled.ul`
     list-style: none;
-    margin: 20px;
+    margin: 0;
     padding: 0;
 `;
 

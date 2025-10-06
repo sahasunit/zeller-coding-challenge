@@ -5,7 +5,6 @@ import type { Customer } from '../data/useCustomers';
 
 const Empty = styled.div`
   padding: 12px;
-  color: #6b7280;
 `;
 
 type Props = {
@@ -15,8 +14,6 @@ type Props = {
 const CustomerList = ({ customers }: Props) => {
     
   if (!customers?.length) return <Empty>No customers found.</Empty>;
-
-  console.log("customers:", customers);
 
   return (
     <List>

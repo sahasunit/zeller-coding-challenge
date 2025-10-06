@@ -5,7 +5,7 @@ const Group = styled.div`
     gap: 8px;
 `;
 
-const Option = styled.label<{ $active: boolean }>`
+const Option = styled.label`
     display: flex; 
     align-items: center;
     cursor: pointer;
@@ -14,20 +14,25 @@ const Option = styled.label<{ $active: boolean }>`
 `;
 
 const Radio = styled.input`
-    accent-color: blue;
+    accent-color: #3b82f6;
     width: 18px;
     height: 18px;
 `;
 
+// Props type: value holds the current selection. 
+// onChange is triggered when toggled
 type Props = {
     value: "ADMIN" | "MANAGER";
     onChange: (role: "ADMIN" | "MANAGER") => void;
 }
 
+
+// RoleFilter renders two radio buttons (Admin & Manager)
+// Controlled component: state comes from parent (App)
 const RoleFilter = ({value, onChange}: Props) => {
     return (
         <Group>
-            <Option $active={value === "ADMIN"}>
+            <Option>
                 <Radio 
                     type="radio" 
                     name="role" 
@@ -37,7 +42,7 @@ const RoleFilter = ({value, onChange}: Props) => {
                 />
                 Admin
             </Option>
-            <Option $active={value === "MANAGER"}>
+            <Option>
                 <Radio 
                     type="radio" 
                     name="role" 

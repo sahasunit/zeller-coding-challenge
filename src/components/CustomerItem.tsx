@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import type { Customer } from '../data/useCustomers';
+import { AdjustRoleCasing } from '../utils/AdjustRoleCasing';
 
 const Row = styled.li`
   display: grid;
@@ -28,19 +29,24 @@ const Name = styled.div`
 
 const Role = styled.div`
   font-size: 12px;
-  color: #6b7280;
+  color: grey;
 `;
 
 type Props = { customer: Customer };
 
 const CustomerItem = ({ customer }: Props) => {
+
+  // Get the first letter for the Avatar block
+  // prefers name -> falls back to email -> '?' if missing
   const letter = (customer?.name ?? customer?.email ?? '?').trim().charAt(0).toUpperCase();
+  const role = customer?.role ? `${AdjustRoleCasing(customer.role)}` : '';
+  
   return (
     <Row aria-label="customer-row">
       <Avatar>{letter || '•'}</Avatar>
       <div>
         <Name>{customer?.name ?? '-'}</Name>
-        <Role>{customer?.role ?? ''}</Role>
+        <Role>{role}</Role>
       </div>
     </Row>
   );

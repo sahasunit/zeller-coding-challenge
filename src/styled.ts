@@ -25,7 +25,7 @@ export const List = styled.ul`
 
 export const Divider = styled.hr`
   border: 0;
-  border-top: 1px solid #ababab;
+  border-top: 1px solid grey;
   margin: 16px 0;
 `;
 

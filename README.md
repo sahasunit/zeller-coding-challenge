@@ -10,7 +10,8 @@ A simple React app that lists Zeller customers from GraphQL and filters by role 
 
 ## Setup
 
-1. Node Version -> v20.18.1
+1. Pre-req: Node Version -> v20.18.1
+2. 'npm install'
 
 ## Run app
 
